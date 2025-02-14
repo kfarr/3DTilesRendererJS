@@ -29,6 +29,7 @@
   "scripts": {
     "start": "vite --config ./vite.config.js",
     "build-examples": "vite build --config ./vite.config.js",
+    "build:aframe": "vite build --config vite.aframe.config.js",
     "lint": "eslint \"src/**/*.{js,jsx,ts}\" \"test/**/*.js\" \"example/*.{js,jsx}\" && tsc -p tsconfig.json --noEmit",
     "test": "tsc --project tsconfig.test.json && jest"
   },
