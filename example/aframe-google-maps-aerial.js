@@ -13,12 +13,12 @@ AFRAME.registerComponent('google-maps-aerial', {
     latitude: { type: 'number', default: 35.6586 }, // Tokyo Tower
     longitude: { type: 'number', default: 139.7454 },
     minDistance: { type: 'number', default: 500 },
-    maxDistance: { type: 'number', default: 20000 }
+    maxDistance: { type: 'number', default: 20000 },
+    ellipsoidalHeight: { type: 'number', default: 0 }
   },
 
   init: function() {
     this.initialized = false;
-    this.cameraOffset = new Vector3(1000, 1000, 1000);
     
     // Initialize tiles
     this.tiles = new TilesRenderer('https://tile.googleapis.com/v1/3dtiles/root.json');
@@ -40,8 +40,12 @@ AFRAME.registerComponent('google-maps-aerial', {
     // Add tiles group to the entity
     this.el.object3D.add(this.tiles.group);
 
-    // Set up animation loop
-    // this.tick = AFRAME.utils.throttleTick(this.tick, 16, this);
+    // Apply height offset to the parent object3D if provided
+    if (this.data.ellipsoidalHeight !== null) {
+      this.el.object3D.position.y = -this.data.ellipsoidalHeight;
+      this.el.object3D.updateMatrix();
+      this.el.object3D.updateMatrixWorld(true);
+    }
 
     // Wait for camera and scene to be ready
     this.el.sceneEl.addEventListener('loaded', () => {
@@ -52,10 +56,6 @@ AFRAME.registerComponent('google-maps-aerial', {
         this.initialized = true;
         this.tiles.setResolutionFromRenderer(this.camera, this.renderer);
         this.tiles.setCamera(this.camera);
-        
-        // Set initial camera position
-        this.camera.position.copy(this.cameraOffset);
-        this.camera.updateMatrixWorld();
       }
     });
   },
