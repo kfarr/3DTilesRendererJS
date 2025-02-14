@@ -14,6 +14,7 @@ import {
 	GLTFExtensionsPlugin,
 	BatchedTilesPlugin,
 	CesiumIonAuthPlugin,
+	GoogleCloudAuthPlugin,
 } from '3d-tiles-renderer/plugins';
 import {
 	Scene,
@@ -56,7 +57,8 @@ function reinstantiateTiles() {
 	}
 
 	tiles = new TilesRenderer();
-	tiles.registerPlugin( new CesiumIonAuthPlugin( { apiToken: import.meta.env.VITE_ION_KEY, assetId: '2275207', autoRefreshToken: true } ) );
+	tiles.registerPlugin( new GoogleCloudAuthPlugin( { apiToken: 'AIzaSyAKveHaNwJJTESz_MMUY8wxtmRKfdFfQhk'}))
+	// tiles.registerPlugin( new CesiumIonAuthPlugin( { apiToken: import.meta.env.VITE_ION_KEY, assetId: '2275207', autoRefreshToken: true } ) );
 	tiles.registerPlugin( new TileCompressionPlugin() );
 	tiles.registerPlugin( new UpdateOnChangePlugin() );
 	tiles.registerPlugin( new UnloadTilesPlugin() );

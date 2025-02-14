@@ -1,0 +1,30 @@
+{
+  "name": "aframe-3d-tiles-renderer",
+  "version": "0.1.0",
+  "description": "A-Frame component for rendering 3D Tiles using 3DTilesRendererJS",
+  "main": "dist/aframe-3d-tiles-renderer.js",
+  "module": "src/index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "build:umd": "vite build --config vite.umd.config.js"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-component",
+    "3d-tiles",
+    "3dtiles",
+    "threejs"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+
+  },
+  "dependencies": {
+    "3d-tiles-renderer": "^0.4.4"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}

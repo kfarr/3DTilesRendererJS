@@ -1,5 +1,5 @@
 import { GeoUtils, WGS84_ELLIPSOID, TilesRenderer } from '3d-tiles-renderer';
-import { TilesFadePlugin, TileCompressionPlugin, GLTFExtensionsPlugin, CesiumIonAuthPlugin } from '3d-tiles-renderer/plugins';
+import { TilesFadePlugin, TileCompressionPlugin, GLTFExtensionsPlugin, GoogleCloudAuthPlugin } from '3d-tiles-renderer/plugins';
 import {
 	Scene,
 	WebGLRenderer,
@@ -29,7 +29,7 @@ function reinstantiateTiles() {
 	}
 
 	tiles = new TilesRenderer();
-	tiles.registerPlugin( new CesiumIonAuthPlugin( { apiToken: import.meta.env.VITE_ION_KEY, assetId: '2275207', autoRefreshToken: true } ) );
+	tiles.registerPlugin( new GoogleCloudAuthPlugin( { apiToken: 'AIzaSyAKveHaNwJJTESz_MMUY8wxtmRKfdFfQhk'}))
 	tiles.registerPlugin( new TileCompressionPlugin() );
 	tiles.registerPlugin( new TilesFadePlugin() );
 	tiles.registerPlugin( new GLTFExtensionsPlugin( {
