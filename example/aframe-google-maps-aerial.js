@@ -1,7 +1,8 @@
 import { TilesRenderer } from '3d-tiles-renderer';
 import { TilesFadePlugin, TileCompressionPlugin, GLTFExtensionsPlugin, GoogleCloudAuthPlugin } from '3d-tiles-renderer/plugins';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { MathUtils } from 'three';
+
+const MathUtils = AFRAME.THREE.MathUtils;
+const DRACOLoader = AFRAME.THREE.DRACOLoader;
 
 if (typeof AFRAME === 'undefined') {
   throw new Error('Component attempted to register before AFRAME was available.');
